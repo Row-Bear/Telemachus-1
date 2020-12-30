@@ -40,7 +40,7 @@
       }
     },
     "G-Force": {
-      series: ["s.sensor.acc"],
+      series: ["v.geeForce"],
       yaxis: {
         label: "Acceleration",
         unit: "Gs",
@@ -49,7 +49,7 @@
       }
     },
     "Gravity": {
-      series: ["s.sensor.grav"],
+      series: ["v.gravitationalAcceleration"],
       yaxis: {
         label: "Gravity",
         unit: "m/s\u00B2",
@@ -58,7 +58,7 @@
       }
     },
     "Pressure": {
-      series: ["s.sensor.pres"],
+      series: ["v.atmosphericPressure"],
       yaxis: {
         label: "Pressure",
         unit: "kPa",
@@ -67,7 +67,7 @@
       }
     },
     "Temperature": {
-      series: ["s.sensor.temp"],
+      series: ["v.temperature"],
       yaxis: {
         label: "Temperature",
         unit: "\u00B0K",
