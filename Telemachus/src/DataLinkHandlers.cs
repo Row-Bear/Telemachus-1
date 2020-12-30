@@ -1708,7 +1708,19 @@ namespace Telemachus
                 "v.verticalSpeed", "Vertical Speed", formatters.Default, APIEntry.UnitType.VELOCITY));
             registerAPI(new PlotableAPIEntry(
                 dataSources => { return dataSources.vessel.geeForce; },
-                "v.geeForce", "G-Force", formatters.Default, APIEntry.UnitType.G));
+                "v.geeForce", "G-Force", formatters.Default, APIEntry.UnitType.ACC));
+            registerAPI(new PlotableAPIEntry(
+                dataSources => { return FlightGlobals.getExternalTemperature(dataSources.vessel.altitude, dataSources.vessel.mainBody); },
+                "v.externalTemperature", "External Temperature", formatters.Default, APIEntry.UnitType.TEMP));
+            registerAPI(new PlotableAPIEntry(
+                dataSources => { return dataSources.vessel.rootPart.temperature; },
+                "v.temperature", "Vessel Temperature", formatters.Default, APIEntry.UnitType.TEMP));
+            registerAPI(new PlotableAPIEntry(
+                dataSources => {
+                    double gravAcceleration = dataSources.vessel.gravityMultiplier * (6.6743e-11 * ((dataSources.vessel.mainBody.Mass + dataSources.vessel.totalMass) / (Math.Pow(dataSources.vessel.altitude + dataSources.vessel.mainBody.Radius, 2))));
+                    return gravAcceleration;
+                },
+                "v.gravitationalAcceleration", "Gravitational Acceleration", formatters.Default, APIEntry.UnitType.GRAV));
             registerAPI(new PlotableAPIEntry(
                 dataSources => {
                     double atmosphericPressure = FlightGlobals.getStaticPressure(dataSources.vessel.altitude, dataSources.vessel.mainBody);
